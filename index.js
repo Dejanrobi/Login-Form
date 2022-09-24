@@ -3,7 +3,8 @@ import {getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithE
 signOut, GoogleAuthProvider,
 signInWithRedirect,
 getRedirectResult,
-signInWithPopup
+signInWithPopup,
+FacebookAuthProvider
 
 } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js"
 import {getDatabase, set, ref, update} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js"
@@ -22,6 +23,7 @@ const firebaseApp = initializeApp({
 const auth = getAuth(firebaseApp);
 const database = getDatabase(firebaseApp);
 const provider = new GoogleAuthProvider(firebaseApp);
+const facebookProvider = new FacebookAuthProvider();
 // const provider = GoogleAuthProvider(firebaseApp)
 
 
@@ -30,6 +32,7 @@ const loginBtn = document.querySelector(".login-btn");
 const signupBtn = document.querySelector(".signup-btn");
 const logOut = document.querySelector(".logout-btn")
 const googleBtn = document.querySelector(".google-btn")
+const fbBtn = document.querySelector(".facebook-btn")
 
 // onAuthStateChanged(auth, user=>{
 //   if(user!=null){
@@ -193,3 +196,29 @@ function googleSignInWithPopup(){
 
 
 googleBtn.addEventListener("click", googleSignInWithPopup)
+
+//SIGNING IN WITH FACEBOOK
+function fbSignInWithPopup(){
+  signInWithPopup(auth, facebookProvider).then((result)=>{
+    //The signed in User info
+    const user = result.user
+
+    //Getting the facebook Access token used to access the Facebook API
+    const credential = FacebookAuthProvider.credentialFromResult(result);
+    const accessToken = credential.accessToken
+
+
+  }).catch((error)=>{
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = FacebookAuthProvider.credentialFromError(error);
+
+    alert(errorMessage)
+  })
+}
+
+fbBtn.addEventListener("click", fbSignInWithPopup)

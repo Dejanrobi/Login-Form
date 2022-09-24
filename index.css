@@ -1,0 +1,87 @@
+/*CSS CODE*/
+
+h1{
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+body{
+  background-color: rgb(239, 245, 252);
+}
+
+.login-box, .logout-box{
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  width: 420px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+input, button{
+  width: 280px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-family: sans-serif;
+  font-size: 15px;
+}
+
+input{
+  width: 270px;
+  padding-left: 5px;
+ 
+}
+
+button{
+  background-color: rgba(17, 112, 253, 0.932);
+  border: none;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  cursor: pointer;
+  color: white;
+  font-size: 17px;
+
+}
+
+button:hover{
+  background-color: rgb(0, 81, 255);
+}
+
+.main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
+}
+
+.uil{
+  font-size: 21px;
+  margin-right: 10px;
+}
+
+.facebook-btn, .google-btn{
+  
+  background-color: rgba(0, 31, 168, 0.897);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: ease;
+}
+
+.facebook-btn:hover{
+  background-color: rgb(0, 31, 168);
+}
+
+.google-btn{
+  transition: ease;
+  background-color: rgba(173, 18, 18, 0.952);
+}
+
+.google-btn:hover{
+  background-color: rgb(173, 18, 18);
+}
